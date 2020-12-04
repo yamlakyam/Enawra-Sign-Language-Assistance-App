@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val PORT_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb") //Serial Port Service ID
     private var device: BluetoothDevice? = null
     private var socket: BluetoothSocket? = null
-    private var outputStream: OutputStream? = null
+    //private var outputStream: OutputStream? = null
     private var inputStream: InputStream? = null
     var buffer: ByteArray= ByteArray(1)
     var stopThread = false
@@ -51,6 +51,16 @@ class MainActivity : AppCompatActivity() {
         startBtn.setOnClickListener {
             BTStart()
             beginListenForData()
+        }
+
+        stopBtn.setOnClickListener {
+            inputStream!!.close()
+            socket!!.close()
+            incomingtxt.text=""
+            Toast.makeText(this, "connection closed", Toast.LENGTH_LONG).show()
+
+            //connect_btn.isEnabled=false
+            startBtn.isEnabled=false
         }
 
 
@@ -96,11 +106,11 @@ class MainActivity : AppCompatActivity() {
             connected = false
         }
         if (connected) {
-            try {
+            /*try {
                 outputStream = socket!!.outputStream
             } catch (e: IOException) {
                 e.printStackTrace()
-            }
+            }*/
             try {
                 inputStream = socket!!.inputStream
             } catch (e: IOException) {
