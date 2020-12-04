@@ -137,11 +137,13 @@ class MainActivity : AppCompatActivity() {
                     while (line != null) {
                         var string=sb.append(line)
                         //handler.post { textView!!.append(string) }
-                        handler.post { incomingtxt!!.append(line) }
+                        //incomingtxt.text=line
+                       handler.post { incomingtxt!!.text=line }
                         var i=0
                         line = br.readLine().substring(i,i+3)
                         if (line=="ha "){
                             var ha: MediaPlayer = MediaPlayer.create(this,R.raw.ha)
+                            ha.start()
 
                         }
                         else if(line=="hu "){
@@ -152,6 +154,10 @@ class MainActivity : AppCompatActivity() {
                             var he: MediaPlayer = MediaPlayer.create(this,R.raw.he)
                             he.start()
                         }
+                        else if(line=="haa"){
+                            var haa: MediaPlayer = MediaPlayer.create(this,R.raw.ha)
+                            haa.start()
+                        }
                         else if(line=="hai"){
                             var hai: MediaPlayer = MediaPlayer.create(this,R.raw.hai)
                             hai.start()
@@ -160,6 +166,7 @@ class MainActivity : AppCompatActivity() {
                             var heee: MediaPlayer = MediaPlayer.create(this,R.raw.heee)
                             heee.start()
                         }
+
                         else{
                             var ho: MediaPlayer = MediaPlayer.create(this,R.raw.ho)
                             ho.start()
