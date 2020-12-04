@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
         startBtn.setOnClickListener {
             BTStart()
+            beginListenForData()
         }
 
 
@@ -136,6 +137,7 @@ class MainActivity : AppCompatActivity() {
                     while (line != null) {
                         var string=sb.append(line)
                         //handler.post { textView!!.append(string) }
+                        handler.post { incomingtxt!!.append(line) }
                         var i=0
                         line = br.readLine().substring(i,i+3)
                         if (line=="ha "){
