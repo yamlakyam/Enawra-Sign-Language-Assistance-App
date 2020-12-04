@@ -4,12 +4,15 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -23,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private var socket: BluetoothSocket? = null
     private var outputStream: OutputStream? = null
     private var inputStream: InputStream? = null
+    var buffer: ByteArray= ByteArray(1)
+    var stopThread = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
 
             }
+        }
+        startBtn.setOnClickListener {
+            BTStart()
         }
 
 
@@ -110,5 +118,60 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun beginListenForData() {
+        val handler = Handler()
+        stopThread = false
+        buffer = ByteArray(1024)
+        val thread = Thread(Runnable {
+            while (!Thread.currentThread().isInterrupted && !stopThread) {
+                try {
+                    //==========================================================================
+                    val sb = StringBuilder()
+                    var line: String?
+
+                    val br = BufferedReader(inputStream!!.bufferedReader(Charsets.UTF_8))
+                    line = br.readLine()
+                    while (line != null) {
+                        var string=sb.append(line)
+                        //handler.post { textView!!.append(string) }
+                        var i=0
+                        line = br.readLine().substring(i,i+3)
+                        if (line=="ha "){
+                            var ha: MediaPlayer = MediaPlayer.create(this,R.raw.ha)
+
+                        }
+                        else if(line=="hu "){
+                            var hu: MediaPlayer = MediaPlayer.create(this,R.raw.hu)
+                            hu.start()
+                        }
+                        else if(line=="he "){
+                            var he: MediaPlayer = MediaPlayer.create(this,R.raw.he)
+                            he.start()
+                        }
+                        else if(line=="hai"){
+                            var hai: MediaPlayer = MediaPlayer.create(this,R.raw.hai)
+                            hai.start()
+                        }
+                        else if(line=="hee"){
+                            var heee: MediaPlayer = MediaPlayer.create(this,R.raw.heee)
+                            heee.start()
+                        }
+                        else{
+                            var ho: MediaPlayer = MediaPlayer.create(this,R.raw.ho)
+                            ho.start()
+                        }
+                    }
+                    br.close()
+                    //==========================================================================
+
+                }
+                catch (ex: IOException) {
+                    stopThread = true
+                }
+            }
+        })
+        thread.start()
     }
 }
