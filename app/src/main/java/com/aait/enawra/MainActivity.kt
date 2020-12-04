@@ -8,6 +8,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.BufferedReader
@@ -153,54 +154,68 @@ class MainActivity : AppCompatActivity() {
                         if (line == "ha ") {
                             var ha: MediaPlayer = MediaPlayer.create(this, R.raw.ha)
                             ha.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             ha.setOnCompletionListener {
                                 ha.release()
+                                soundAnim.visibility= View.INVISIBLE
                             }
 
                         }
                         else if (line == "hu ") {
                             var hu: MediaPlayer = MediaPlayer.create(this, R.raw.hu)
                             hu.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             hu.setOnCompletionListener {
                                 hu.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
                         } else if (line == "he ") {
                             var he: MediaPlayer = MediaPlayer.create(this, R.raw.he)
                             he.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             he.setOnCompletionListener {
                                 he.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
                         } else if (line == "haa") {
                             var haa: MediaPlayer = MediaPlayer.create(this, R.raw.ha)
                             haa.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             haa.setOnCompletionListener {
                                 haa.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
 
                         } else if (line == "hai") {
                             var hai: MediaPlayer = MediaPlayer.create(this, R.raw.hai)
                             hai.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             hai.setOnCompletionListener {
                                 hai.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
 
                         } else if (line == "hee") {
                             var heee: MediaPlayer = MediaPlayer.create(this, R.raw.heee)
                             heee.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE}
                             heee.setOnCompletionListener {
                                 heee.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
 
                         } else {
                             var ho: MediaPlayer = MediaPlayer.create(this, R.raw.ho)
                             ho.start()
+                            handler.post{soundAnim.visibility=View.VISIBLE }
                             ho.setOnCompletionListener {
                                 ho.release()
+                                soundAnim.visibility=View.INVISIBLE
                             }
 
                         }

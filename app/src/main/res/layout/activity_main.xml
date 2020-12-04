@@ -23,11 +23,20 @@
         android:text="TextView"
         android:textSize="30sp" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/soundAnim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lottie_rawRes="@raw/speech_anim1"
+        app:lottie_autoPlay="true"
+        android:visibility="invisible"
+        app:lottie_loop="true"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="100dp"
         android:gravity="bottom"
         android:orientation="horizontal">
 
