@@ -5,38 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/welcometxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Welcome" />
-
-    <TextView
         android:id="@+id/incomingtxt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="View text here"
+        android:textColor="#ef314c"
         android:textSize="30sp" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/soundAnim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:lottie_rawRes="@raw/speech_anim1"
-        app:lottie_autoPlay="true"
         android:visibility="invisible"
-        app:lottie_loop="true"/>
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/speech_anim1" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="115dp"
         android:gravity="bottom"
         android:orientation="horizontal">
 
@@ -44,17 +42,22 @@
             android:id="@+id/startBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:background="#ef314c"
             android:text="Start"
-            android:textAllCaps="true" />
+            android:textAllCaps="true"
+            android:textColor="#ffe0b2" />
 
         <Button
             android:id="@+id/stopBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
+            android:background="#ef314c"
             android:text="Stop"
-            android:textAllCaps="false" />
+            android:textColor="#ffe0b2" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,10 +69,11 @@
             android:id="@+id/connect_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
-            android:paddingBottom="20dp"
+            android:background="#ef314c"
             android:text="Connect"
-            android:textAllCaps="false" />
+            android:textColor="#ffe0b2" />
     </LinearLayout>
 
 </LinearLayout>
